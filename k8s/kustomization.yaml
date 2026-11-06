@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - namespace.yaml
+  - app-configmap.yaml
+  - app-secret.yaml
+  - mysql-secret.yaml
+  - mysql-pvc.yaml
+  - mysql-initdb-configmap.yaml
+  - mysql-deployment.yaml
+  - mysql-service.yaml
+  - user-service-deployment.yaml
+  - user-service-service.yaml
+  - auth-service-deployment.yaml
+  - auth-service-service.yaml
+  - nginx-configmap.yaml
+  - nginx-proxy-deployment.yaml
+  - nginx-proxy-service.yaml
+  - ingress.yaml
+  - logging/fluent-bit-rbac.yaml
+  - logging/fluent-bit-configmap.yaml
+  - logging/fluent-bit-daemonset.yaml
+
+images:
+  - name: microservices/user-service
+    newName: microservices/user-service
+    newTag: latest
+  - name: microservices/auth-service
+    newName: microservices/auth-service
+    newTag: latest
